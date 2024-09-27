@@ -20,11 +20,40 @@
         homeDirectory = "/home/prouk";
     };
 
-    programs.home-manager.enable = true;
-    programs.git.enable = true;
-    programs.fish.enable = true;
+    wayland.windowManager.hyprland = {
+        enable = true;
+        settings = {
+            decoration = {
+                rounding = "10";
+            };
+        };
+	};
 
-    systemd.user.startServices = "sd-switch";
+	home.packages = with pkgs; [
+	    btop
+	    eww
+	    firefox
+	    hyprpaper
+	    hyprshot
+		jetbrains-toolbox
+		pwvucontrol
+		rofi
+		steam
+		vesktop
+		wev
+	];
+
+    programs = {
+        fish = {
+            enable = true;
+		};
+        man = {
+            generateCaches = true;
+		};
+        kitty = {
+            shellIntegration.enableFishIntegration = true;
+		};
+	};
 
     system.stateVersion = "24.05";
 }
