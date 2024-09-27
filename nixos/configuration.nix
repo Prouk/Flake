@@ -1,6 +1,7 @@
 {
     imports = [
         ./hardware-configuration.nix
+        inputs.home-manager.nixosModules.home-manager
     ];
     nixpkgs = {
 		config = {
@@ -37,6 +38,13 @@
 			extraGroups = ["wheel"];
 		};
     };
+
+	home-manager = {
+		extraSpecialArgs = { inherit inputs outputs; };
+			users = {
+			prouk = import ../home-manager/home.nix;
+		};
+	};
 
 	fileSystems."/home/prouk/2To" = {
 		device = "/dev/disk/by-label/NVME2To";
