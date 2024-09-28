@@ -76,6 +76,7 @@
 	# Enabling mandatory soft
     programs.git.enable = true;
     programs.hyprland.enable = true;
+    programs.hyprland.xwayland.enable = true;
 	programs.steam.enable = true;
 
     system.stateVersion = "24.05";

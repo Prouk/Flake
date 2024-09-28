@@ -6,10 +6,6 @@
     config,
     ...
 }: {
-	imports = [
-	    ./hyprland.nix
-	];
-
     nixpkgs = {
         config = {
             allowUnfree = true;
