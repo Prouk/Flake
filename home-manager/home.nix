@@ -56,6 +56,7 @@
             generateCaches = true;
 		};
         kitty = {
+            enable = true;
             shellIntegration.enableFishIntegration = true;
 		};
 	};
