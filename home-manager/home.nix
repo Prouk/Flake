@@ -67,7 +67,7 @@
         kitty = {
             enable = true;
             shellIntegration.enableFishIntegration = true;
-            theme = "${./gruv.conf}";
+            theme = "Gruvbox Dark";
 		};
 	};
 }
