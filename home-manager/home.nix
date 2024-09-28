@@ -6,6 +6,9 @@
     config,
     ...
 }: {
+	imports = [
+	    ./hyprland.nix
+	];
 
     nixpkgs = {
         config = {
@@ -21,13 +24,9 @@
     };
 
     wayland.windowManager.hyprland = {
-        enable = true;
-        settings = {
-            decoration = {
-                rounding = "10";
-            };
-        };
-	};
+		enable = true;
+		settings = import ./hyprland.nix;
+    };
 
 	home.packages = with pkgs; [
 	    btop
