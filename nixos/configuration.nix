@@ -34,11 +34,15 @@
     networking.hostName = "prouk";
     networking.enableIPv6 = false;
     networking.firewall.enable = false;
-    users.users = {
-		prouk = {
-			isNormalUser = true;
-			extraGroups = ["wheel"];
-		};
+    users = {
+    	defaultUserShell = pkgs.fish;
+	    users = {
+			prouk = {
+				isNormalUser = true;
+				extraGroups = ["wheel"];
+				useDefaultShell = true;
+			};
+	    };
     };
 
 	home-manager = {
@@ -78,6 +82,7 @@
     programs.hyprland.enable = true;
     programs.hyprland.xwayland.enable = true;
 	programs.steam.enable = true;
+	programs.fish.enable = true;
 
     system.stateVersion = "24.05";
 }

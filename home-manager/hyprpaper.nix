@@ -8,6 +8,7 @@
 	];
 
 	wallpaper = [
-		"HDMI-1-A, ${./wallpapers/bg.png}"
+		"HDMI-A-1, ${./wallpapers/bg.png}"
+		"DP-1, ${./wallpapers/bg.png}"
 	];
 }

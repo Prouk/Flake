@@ -17,6 +17,12 @@
         username = "prouk";
         homeDirectory = "/home/prouk";
         stateVersion = "24.05";
+        pointerCursor = {
+            gtk.enable = true;
+            package = pkgs.bibata-cursors-translucent;
+			name = "Bibata Ghost";
+			size = 24;
+        };
     };
 
     wayland.windowManager.hyprland = {
@@ -24,15 +30,16 @@
 		settings = import ./hyprland.nix;
     };
 
-	# services.hyprpaper = {
-	#     enable = true;
-	#     settings = ./hyprpaper.nix;
-    # };
+	services.hyprpaper = {
+	    enable = true;
+	    settings = import ./hyprpaper.nix;
+    };
 
 	home.packages = with pkgs; [
 	    btop
 	    eww
 	    firefox
+	    hyprpaper
 	    hyprshot
 		jetbrains-toolbox
 		playerctl
@@ -44,11 +51,7 @@
 		xfce.thunar
 	];
 
-
     programs = {
-        fish = {
-            enable = true;
-		};
         man = {
             generateCaches = true;
 		};

@@ -1,4 +1,8 @@
 {
+	env = [
+		"HYPRCURSOR_THEME,Bibata Ghost"
+		"HYPRCURSOR_SIZE,24"
+	];
 	monitor = [
 		"HDMI-A-1,3840x2160@120,1920x-200,1"
 		"DP-1,1920x1080@120,0x0,1"
@@ -17,8 +21,8 @@
 	];
 	general = {
 		border_size = 0;
-		gaps_in = 10;
-		gaps_out = 20;
+		gaps_in = 20;
+		gaps_out = 40;
 		layout = "dwindle";
 		allow_tearing = "true";
 	};
@@ -50,7 +54,7 @@
 	bind = [
 		"SUPER, code:24, exec, kitty"
 		"SUPER, code:9, killactive, "
-		"SUPER CTRL, , togglefloating, "
+		"SUPER, code:37, togglefloating, "
 		"SUPER, code:49, exec, rofi -show drun"
 		"SUPER, code:39, togglesplit, "
 		"SUPER, code:95, fullscreen, "
@@ -78,5 +82,8 @@
 	animation = [
 		"workspaces, 1, 5, main, slidefadevert"
 		"windows, 1, 3, main, slide"
+	];
+	"exec-once" = [
+		"hyprpaper"
 	];
 }
