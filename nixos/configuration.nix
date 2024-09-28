@@ -1,4 +1,4 @@
-{
+{ inputs, outputs, pkgs, lib, config, ... }: {
     imports = [
         ./hardware-configuration.nix
         inputs.home-manager.nixosModules.home-manager
@@ -12,7 +12,7 @@
 		flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 	in {
 		settings = {
-			experimental-features = "nix-command" "flake";
+			experimental-features = ["nix-command" "flake"];
 			flake-registry = "";
 			nix-path = config.nix.nixPath;
 		};
@@ -28,7 +28,7 @@
 	i18n.defaultLocale = "en_US.UTF-8";
 	console = {
 		font = "Lat2-Terminus16";
-		keymap = "fr";
+		keyMap = "fr";
 	};
 
     networking.hostName = "prouk";
@@ -41,7 +41,7 @@
 
 	home-manager = {
 		extraSpecialArgs = { inherit inputs outputs; };
-			users = {
+		users = {
 			prouk = import ../home-manager/home.nix;
 		};
 	};
@@ -66,17 +66,16 @@
 
     # Graphics settings
     hardware.graphics.enable = true;
+    hardware.nvidia.open = false;
     services.xserver.videoDrivers = ["nvidia"];
     services.displayManager.sddm.wayland.enable = true;
     services.displayManager.sddm.enable = true;
     xdg.portal.wlr.enable = true;
 
 	# Enabling mandatory soft
-	programs.steam.enable = true;
-    programs.home-manager.enable = true;
     programs.git.enable = true;
-
-    systemd.user.startServices = "sd-switch";
+    programs.hyprland.enable = true;
+	programs.steam.enable = true;
 
     system.stateVersion = "24.05";
 }

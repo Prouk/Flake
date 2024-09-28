@@ -19,7 +19,7 @@
 		let
 			inherit (self) outputs;
 		in {
-			nixosConfiguration.prouk = nixpkgs.lib.nixosSystem {
+			nixosConfigurations = {
 				prouk = nixpkgs.lib.nixosSystem {
 					specialArgs = {inherit inputs outputs;};
 					modules = [./nixos/configuration.nix];

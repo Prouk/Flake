@@ -1,12 +1,11 @@
 {
     inputs,
+    outputs,
+    pkgs,
     lib,
     config,
     ...
 }: {
-    imports = [
-
-    ];
 
     nixpkgs = {
         config = {
@@ -18,6 +17,7 @@
     home = {
         username = "prouk";
         homeDirectory = "/home/prouk";
+        stateVersion = "24.05";
     };
 
     wayland.windowManager.hyprland = {
@@ -54,6 +54,4 @@
             shellIntegration.enableFishIntegration = true;
 		};
 	};
-
-    system.stateVersion = "24.05";
 }
