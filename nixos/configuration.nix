@@ -12,7 +12,7 @@
 		flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 	in {
 		settings = {
-			experimental-features = ["nix-command" "flake"];
+			experimental-features = ["nix-command" "flakes"];
 			flake-registry = "";
 			nix-path = config.nix.nixPath;
 		};
@@ -44,6 +44,7 @@
 		users = {
 			prouk = import ../home-manager/home.nix;
 		};
+		backupFileExtension = "backup";
 	};
 
 	fileSystems."/home/prouk/2To" = {
