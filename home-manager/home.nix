@@ -24,19 +24,26 @@
 		settings = import ./hyprland.nix;
     };
 
+	# services.hyprpaper = {
+	#     enable = true;
+	#     settings = ./hyprpaper.nix;
+    # };
+
 	home.packages = with pkgs; [
 	    btop
 	    eww
 	    firefox
-	    hyprpaper
 	    hyprshot
 		jetbrains-toolbox
+		playerctl
 		pwvucontrol
 		rofi
 		steam
 		vesktop
 		wev
+		xfce.thunar
 	];
+
 
     programs = {
         fish = {

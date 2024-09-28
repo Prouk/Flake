@@ -32,6 +32,8 @@
 	};
 
     networking.hostName = "prouk";
+    networking.enableIPv6 = false;
+    networking.firewall.enable = false;
     users.users = {
 		prouk = {
 			isNormalUser = true;
@@ -59,8 +61,6 @@
 
     environment.systemPackages = with pkgs; [
     	git
-    	home-manager
-    	hyprland
     	kitty
     	nano
     ];
