@@ -19,10 +19,20 @@
         stateVersion = "24.05";
         pointerCursor = {
             gtk.enable = true;
-            package = pkgs.bibata-cursors-translucent;
-			name = "Bibata Ghost";
+            x11.enable = true;
+			name = "graphite-dark-nord";
+            package = pkgs.graphite-cursors;
 			size = 24;
         };
+    };
+
+    gtk = {
+		enable = true;
+		cursorTheme = {
+			name = "graphite-dark-nord";
+			package = pkgs.graphite-cursors;
+			size = 24;
+		};
     };
 
     wayland.windowManager.hyprland = {
@@ -45,7 +55,6 @@
 		playerctl
 		pwvucontrol
 		rofi
-		steam
 		vesktop
 		wev
 		xfce.thunar

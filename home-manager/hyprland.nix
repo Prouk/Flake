@@ -1,6 +1,6 @@
 {
 	env = [
-		"HYPRCURSOR_THEME,Bibata Ghost"
+		"HYPRCURSOR_THEME,graphite-dark-nord"
 		"HYPRCURSOR_SIZE,24"
 	];
 	monitor = [
@@ -32,7 +32,7 @@
 		fullscreen_opacity = 1;
 		inactive_opacity = 0.75;
 		drop_shadow = true;
-		shadow_range = 10;
+		shadow_range = 20;
 		shadow_render_power = 3;
 		shadow_ignore_window = false;
 		"col.shadow" = "0xee1a1a1a";
@@ -85,5 +85,6 @@
 	];
 	"exec-once" = [
 		"hyprpaper"
+		"hyprctl setcursor graphite-dark-nord 24"
 	];
 }
