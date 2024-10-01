@@ -56,8 +56,9 @@
 		"SUPER, code:9, killactive, "
 		"SUPER, code:37, togglefloating, "
 		"SUPER, code:49, exec, rofi -show drun"
+		"SUPER SHIFT, code:39, exec, hyprshot -m region --clipboard-only"
 		"SUPER, code:39, togglesplit, "
-		"SUPER, code:95, fullscreen, "
+		", code:95, fullscreen, 0"
 		"SUPER, code:114, workspace, +1"
 		"SUPER, code:113, workspace, -1"
 		"SUPER_ALT, code:114, movetoworkspace, +1"
@@ -72,7 +73,6 @@
 		"SUPER, mouse:273, resizewindow"
 	];
 	windowrulev2 = [
-		"suppressevent maximize, class:.*"
 		"float, class:^(Rofi)$"
 	];
 	bezier = [
