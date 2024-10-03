@@ -58,6 +58,7 @@
 		vesktop
 		wev
 		xfce.thunar
+		fastfetch
 	];
 
     programs = {
@@ -68,6 +69,9 @@
             enable = true;
             shellIntegration.enableFishIntegration = true;
             theme = "Gruvbox Dark";
+		};
+		mangohud = {
+			enable = true;
 		};
 	};
 }

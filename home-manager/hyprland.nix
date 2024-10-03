@@ -67,6 +67,7 @@
 		", code:171, exec, playerctl next"
 		", code:173, exec, playerctl previous"
 		", code:121, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+		"SUPER, code:67, exec, ${./sh/gamemode.sh}"
 	];
 	bindm = [
 		"SUPER, mouse:272, movewindow"

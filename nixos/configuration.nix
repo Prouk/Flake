@@ -39,7 +39,7 @@
 	    users = {
 			prouk = {
 				isNormalUser = true;
-				extraGroups = ["wheel"];
+				extraGroups = ["wheel" "gamemode"];
 				useDefaultShell = true;
 			};
 	    };
@@ -61,6 +61,24 @@
     services.pipewire = {
     	enable = true;
     	pulse.enable = true;
+    	extraConfig = {
+			pipewire = {
+				"10-clock-rate" = {
+					"context.properties" = {
+						"default.clock.rate" = 44100;
+			    	};
+				};
+				"11-clock-quantum" = {
+					"context.properties" = {
+						"default.clock.quantum-floor" = 128;
+						"default.clock.quantum-limit" = 1024;
+						"default.clock.min-quantum" = 128;
+						"default.clock.max-quantum" = 1024;
+						"default.clock.quantum" = 256;
+			    	};
+				};
+			};
+    	};
     };
 
     environment.systemPackages = with pkgs; [
@@ -77,11 +95,31 @@
     xdg.portal.wlr.enable = true;
 
 	# Enabling mandatory soft
-    programs.git.enable = true;
-    programs.hyprland.enable = true;
-    programs.hyprland.xwayland.enable = true;
-	programs.steam.enable = true;
-	programs.fish.enable = true;
+	programs = {
+	    git = {
+	    	enable = true;
+    	};
+	    hyprland = {
+	    	enable = true;
+	    	xwayland.enable = true;
+    	};
+    	steam = {
+			enable = true;
+			extraPackages = with pkgs; [
+				gamescope
+			];
+			gamescopeSession = {
+				enable = true;
+    		};
+		};
+		gamemode = {
+			enable = true;
+			enableRenice = true;
+		};
+		fish = {
+			enable = true;
+		};
+	};
 
     system.stateVersion = "24.05";
 }
