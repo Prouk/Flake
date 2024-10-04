@@ -18,8 +18,12 @@
         homeDirectory = "/home/prouk";
         stateVersion = "24.05";
         pointerCursor = {
-            gtk.enable = true;
-            x11.enable = true;
+            gtk = {
+                enable = true;
+			};
+            x11 = {
+                enable = true;
+			}:
 			name = "graphite-dark-nord";
             package = pkgs.graphite-cursors;
 			size = 24;
@@ -45,21 +49,23 @@
 	    settings = import ./hyprpaper.nix;
     };
 
-	home.packages = with pkgs; [
-	    btop
-	    eww
-	    firefox
-	    hyprpaper
-	    hyprshot
-		jetbrains-toolbox
-		playerctl
-		pwvucontrol
-		rofi
-		vesktop
-		wev
-		xfce.thunar
-		fastfetch
-	];
+	home = {
+	    packages = with pkgs; [
+		    btop
+		    eww
+		    firefox
+		    hyprpaper
+		    hyprshot
+			jetbrains-toolbox
+			playerctl
+			pwvucontrol
+			rofi
+			vesktop
+			wev
+			xfce.thunar
+			fastfetch
+		];
+	};
 
     programs = {
         man = {
@@ -67,7 +73,9 @@
 		};
         kitty = {
             enable = true;
-            shellIntegration.enableFishIntegration = true;
+            shellIntegration = {
+                enableFishIntegration = true;
+			};
             theme = "Gruvbox Dark";
 		};
 		mangohud = {

@@ -21,19 +21,37 @@
 		nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
+	boot = {
+		boot = {
+			loader = {
+				systemd-boot.enable = true;
+				efi = {
+					canTouchEfiVariables = true;
+				};
+			};
+		};
+		kernelPackages = pkgs.linuxPackages_xanmod_stable;
+	}
 
-	time.timeZone = "Europe/Paris";
-	i18n.defaultLocale = "en_US.UTF-8";
+	time = {
+		timeZone = "Europe/Paris";
+	};
+
+	i18n = {
+		defaultLocale = "en_US.UTF-8";
+	};
+
 	console = {
 		font = "Lat2-Terminus16";
 		keyMap = "fr";
 	};
 
-    networking.hostName = "prouk";
-    networking.enableIPv6 = false;
-    networking.firewall.enable = false;
+    networking = {
+		hostName = "prouk";
+	    enableIPv6 = false;
+	    firewall.enable = false;
+    };
+
     users = {
     	defaultUserShell = pkgs.fish;
 	    users = {
@@ -58,50 +76,93 @@
 		fsType = "ext4";
 	};
 
-    services.pipewire = {
-    	enable = true;
-    	pulse.enable = true;
-    	extraConfig = {
-			pipewire = {
-				"10-clock-rate" = {
-					"context.properties" = {
-						"default.clock.rate" = 44100;
-			    	};
-				};
-				"11-clock-quantum" = {
-					"context.properties" = {
-						"default.clock.quantum-floor" = 128;
-						"default.clock.quantum-limit" = 1024;
-						"default.clock.min-quantum" = 128;
-						"default.clock.max-quantum" = 1024;
-						"default.clock.quantum" = 256;
-			    	};
-				};
+    services = {
+    	pipewire = {
+	    	enable = true;
+	    	alsa = {
+	    		enable = true;
+	    	};
+	    	pulse = {
+	    		enable = true;
 			};
+	    	extraConfig = {
+				pipewire = {
+					"10-clock-rate" = {
+						"context.properties" = {
+							"default.clock.rate" = 44100;
+				    	};
+					};
+					"11-clock-quantum" = {
+						"context.properties" = {
+							"default.clock.quantum-floor" = 128;
+							"default.clock.quantum-limit" = 1024;
+							"default.clock.min-quantum" = 128;
+							"default.clock.max-quantum" = 1024;
+							"default.clock.quantum" = 256;
+				    	};
+					};
+				};
+	    	};
+	    };
+    };
+
+    environment = {
+    	systemPackages = with pkgs; [
+	    	git
+	    	nano
+	    ];
+    };
+
+    hardware = {
+    	graphics = {
+    		enable = true;
+		};
+    	nvidia = {
+    		open = true;
+		};
+    };
+
+    services = {
+	    displayManager = {
+		    sddm = {
+		    	enable = true;
+		    	wayland = {
+		    		enable = true;
+	    		};
+		    };
+	    };
+		input-remapper = {
+    		enable = true;
+    	};
+    	xserver = {
+    		videoDrivers = ["nvidia"];
     	};
     };
 
-    environment.systemPackages = with pkgs; [
-    	git
-    	nano
-    ];
+    xdg = {
+    	portal = {
+    		wlr = {
+    			enable = true;
+			};
+		};
+	};
 
-    # Graphics settings
-    hardware.graphics.enable = true;
-    hardware.nvidia.open = false;
-    services.xserver.videoDrivers = ["nvidia"];
-    services.displayManager.sddm.wayland.enable = true;
-    services.displayManager.sddm.enable = true;
-    xdg.portal.wlr.enable = true;
-
-	# Enabling mandatory soft
 	programs = {
+		fish = {
+			enable = true;
+		};
+		gamemode = {
+			enable = true;
+			enableRenice = true;
+		};
 	    git = {
 	    	enable = true;
     	};
 	    hyprland = {
 	    	enable = true;
-	    	xwayland.enable = true;
+	    	xwayland = {
+	    		enable = true;
+    		};
     	};
     	steam = {
 			enable = true;
@@ -112,14 +173,9 @@
 				enable = true;
     		};
 		};
-		gamemode = {
-			enable = true;
-			enableRenice = true;
-		};
-		fish = {
-			enable = true;
-		};
 	};
 
-    system.stateVersion = "24.05";
+    system = {
+    	stateVersion = "24.05";
+	};
 }

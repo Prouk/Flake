@@ -4,8 +4,8 @@
 		"HYPRCURSOR_SIZE,24"
 	];
 	monitor = [
-		"HDMI-A-1,3840x2160@120,1920x-200,1"
-		"DP-1,1920x1080@120,0x0,1"
+		"HDMI-A-1,3840x2160@120,1080x-100,1"
+		"DP-1,1920x1080@120,0x0,1,transform,1"
 	];
 	workspace = [
 		"workspace = 1,monitor:DP-1"
