@@ -23,7 +23,7 @@
 			};
             x11 = {
                 enable = true;
-			}:
+			};
 			name = "graphite-dark-nord";
             package = pkgs.graphite-cursors;
 			size = 24;
@@ -53,7 +53,6 @@
 	    packages = with pkgs; [
 		    btop
 		    eww
-		    firefox
 		    hyprpaper
 		    hyprshot
 			jetbrains-toolbox
@@ -68,15 +67,21 @@
 	};
 
     programs = {
-        man = {
-            generateCaches = true;
-		};
+        firefox = {
+			enable = true;
+        };
         kitty = {
             enable = true;
             shellIntegration = {
                 enableFishIntegration = true;
 			};
+			settings = {
+			    confirm_os_window_close = 0;
+			};
             theme = "Gruvbox Dark";
+		};
+        man = {
+            generateCaches = true;
 		};
 		mangohud = {
 			enable = true;
